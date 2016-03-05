@@ -2,8 +2,8 @@ import sys
 import os
 
 home = os.path.expanduser("~")
-Descargas = home + "/Descargas/"
-UGR = home + "/UGR/"
+Descargas = os.path.join(home, "Descargas")
+UGR = os.path.join(home, "UGR")
 
 def compruebaArchivo(cadena, archivo):
     archivo_nuevo = ""
