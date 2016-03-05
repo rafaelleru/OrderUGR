@@ -19,31 +19,16 @@ def compruebaArchivo(cadena, archivo):
     return archivo_nuevo
 
 def mueveArchivos():
+    tipoDeArchivos = [
+        'TSI', 'FBD', 'IC',
+        'IA', 'AC', 'ALG'
+        ]
     for path, dirs, files in os.walk(Descargas):
         for arch in files:
-            #Asignatura TSI
-            if "TSI" in arch:
-                arch_nuevo=compruebaArchivo("TSI", arch)
-                os.rename(os.path.join(Descargas,arch), os.path.join(UGR, "TSI/" + arch_nuevo))
-            #Asignatura FBD
-            elif "FBD" in arch:
-                arch_nuevo=compruebaArchivo("FBD", arch)
-                os.rename(os.path.join(Descargas,arch), os.path.join(UGR, "FBD/" + arch_nuevo))
-            #Asignatura IC
-            elif "IC" in arch:
-                arch_nuevo=compruebaArchivo("IC", arch)
-                os.rename(os.path.join(Descargas,arch), os.path.join(UGR, "IC/" + arch_nuevo))
-            #Asignatura IA
-            elif "IA" in arch:
-                arch_nuevo=compruebaArchivo("IA", arch)
-                os.rename(os.path.join(Descargas,arch), os.path.join(UGR, "IA/" + arch_nuevo))
-            #Asignatura AC
-            elif "AC" in arch:
-                arch_nuevo=compruebaArchivo("AC", arch)
-                os.rename(os.path.join(Descargas,arch), os.path.join(UGR, "AC/" + arch_nuevo))
-            #Asignatura ALG
-            elif "ALG" in arch:
-                arch_nuevo=compruebaArchivo("ALG", arch)
-                os.rename(os.path.join(Descargas,arch), os.path.join(UGR, "ALG/" + arch_nuevo))
+            for tipo in tipoDeArchivos:
+                if tipo in arch:
+                    arch_nuevo=compruebaArchivo(tipo, arch)
+                    os.rename(os.path.join(Descargas,arch), os.path.join(UGR, tipo + "/" + arch_nuevo))   
+
 
 mueveArchivos()
