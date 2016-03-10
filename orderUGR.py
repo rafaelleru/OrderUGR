@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import os
 
+"""paths de las carpetas, si se tiene otra organizacion distinta cambiar los
+que hagan falta"""
 home = os.path.expanduser("~")
 Descargas = os.path.join(home, "Descargas")
 UGR = os.path.join(home, "UGR")
@@ -25,6 +27,9 @@ curso3 = [
 cursos = [curso1, curso2, curso3]
 path_cursos = [primero, segundo, tercero, cuarto]
 
+"""funcion que elimina la cadena que identifica la asignatura de un archivo'
+para almacenarlo"""
+
 
 def eliminaCadena(cadena, archivo):
     archivo_nuevo = ""
@@ -38,6 +43,8 @@ def eliminaCadena(cadena, archivo):
 
     return archivo_nuevo
 
+# funcion que devuelve la nueva ruta del archivo
+
 
 def renombraPath(archivo):
     nuevo_path = None
@@ -46,10 +53,12 @@ def renombraPath(archivo):
             if asignatura in archivo:
                 ncurso = cursos.index(curso)
                 archivo_nuevo = eliminaCadena(asignatura, archivo)
+                # si la carpeta para esa asignatura no existe la crea
                 if not os.path.isdir(os.path.join(UGR, asignatura)):
                     os.makedirs(os.path.join(UGR, asignatura))
                 nuevo_path = os.path.join(
-                    path_cursos[ncurso], os.path.join(asignatura, archivo_nuevo))
+                    path_cursos[ncurso], os.path.join(asignatura,
+                                                      archivo_nuevo))
     return nuevo_path
 
 
