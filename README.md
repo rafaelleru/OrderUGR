@@ -4,7 +4,7 @@ Script en python que automatiza la tarea de ordenar los archivos descargados en 
 
 ### Uso
 
- -Descargar el script en python en la carpeta deseada.
+ -Descargar el script en python en la carpeta deseada\n
  -Cambiar las carpetas de los cursos si se deseada
 
 ##### opcional
