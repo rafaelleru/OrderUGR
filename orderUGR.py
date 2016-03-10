@@ -1,5 +1,4 @@
-#!/bin/usr/python3
-import sys
+#!/usr/bin/python3
 import os
 
 home = os.path.expanduser("~")
@@ -21,18 +20,19 @@ curso2 = [
 
 curso3 = [
     'MC', 'IG', 'DDSI', 'FR', 'ISE',
-    ] #Mas cosas
+]  # Mas cosas
 
-cursos = [ curso1, curso2, curso3 ]
+cursos = [curso1, curso2, curso3]
 path_cursos = [primero, segundo, tercero, cuarto]
+
 
 def eliminaCadena(cadena, archivo):
     archivo_nuevo = ""
 
-    if "_"+cadena in archivo:
-        archivo_nuevo = archivo.replace("_"+cadena, '')
-    elif "-"+cadena in archivo:
-        archivo_nuevo = archivo.replace("-"+cadena, '')
+    if "_" + cadena in archivo:
+        archivo_nuevo = archivo.replace("_" + cadena, '')
+    elif "-" + cadena in archivo:
+        archivo_nuevo = archivo.replace("-" + cadena, '')
     else:
         archivo_nuevo = archivo
 
@@ -46,12 +46,16 @@ def renombraPath(archivo):
             if asignatura in archivo:
                 ncurso = cursos.index(curso)
                 archivo_nuevo = eliminaCadena(asignatura, archivo)
-                nuevo_path = os.path.join(path_cursos[ncurso], os.path.join(asignatura, archivo_nuevo))
+                if not os.path.isdir(os.path.join(UGR, asignatura)):
+                    os.makedirs(os.path.join(UGR, asignatura))
+                nuevo_path = os.path.join(
+                    path_cursos[ncurso], os.path.join(asignatura, archivo_nuevo))
     return nuevo_path
+
 
 def mueveArchivos():
 
-    for path, dirs, files in os.walk(Descargas):
+    for files in os.walk(Descargas):
         for arch in files:
             nuevo_archivo = renombraPath(arch)
             if not (nuevo_archivo is None):
