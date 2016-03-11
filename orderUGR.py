@@ -71,8 +71,8 @@ def renombraPath(archivo):
                 ncurso = cursos.index(curso)
                 archivo_nuevo = eliminaCadena(asignatura, archivo)
                 # si la carpeta para esa asignatura no existe la crea
-                if not os.path.isdir(os.path.join(UGR, asignatura)):
-                    os.makedirs(os.path.join(UGR, asignatura))
+                """if not os.path.isdir(os.path.join(UGR, asignatura)):
+                    os.makedirs(os.path.join(UGR, asignatura))"""
                 nuevo_path = os.path.join(
                     path_cursos[ncurso], os.path.join(asignatura,
                                                       archivo_nuevo))
@@ -81,7 +81,7 @@ def renombraPath(archivo):
 
 def mueveArchivos():
 
-    for files in os.walk(Descargas):
+    for path, names, files in os.walk(Descargas):
         for arch in files:
             nuevo_archivo = renombraPath(arch)
             if not (nuevo_archivo is None):
