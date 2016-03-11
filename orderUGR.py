@@ -22,11 +22,11 @@ curso2 = [
 
 curso3 = [
     'MC', 'IG', 'DDSI', 'FR', 'ISE',
-    'SWAP', 'TDRC', 'SMM', 'TW', 'CUIA',# TI
-    'DHD', 'SMP', 'AS', 'ACAP', 'DSE',# IC
-    'DS', 'SG', 'DSD', 'DIU', 'SIBW',# IS
-    'MCA', 'MH', 'TSI', 'IC', 'AA',# CSI
-    'SIE', 'PW', 'SMD', 'ISI', 'ABD'# SI
+    'SWAP', 'TDRC', 'SMM', 'TW', 'CUIA',  # TI
+    'DHD', 'SMP', 'AS', 'ACAP', 'DSE',  # IC
+    'DS', 'SG', 'DSD', 'DIU', 'SIBW',  # IS
+    'MCA', 'MH', 'TSI', 'IC', 'AA',  # CSI
+    'SIE', 'PW', 'SMD', 'ISI', 'ABD'  # SI
 ]  # Mas cosas
 curso4 = [
     'SE', 'TR', 'CPD', 'IAH', 'TE',
