@@ -21,10 +21,11 @@ curso2 = [
     'IA', 'FIS', 'AC', 'ALG', 'FBD']
 
 curso3 = [
-    'MC', 'IG', 'DDSI', 'FR', 'ISE',
+    'MC', 'IG', 'DDSI', 'FR', 'ISE','SWAP','TDRC','SMM','TW','CUIA','DHD','SMP','AS','ACAP','DSE','DS','SG','DSD','DIU','SIBW','MCA','MH','TSI','IC','AA','SIE','PW','SMD','ISI','ABD'
 ]  # Mas cosas
+curso4 = ['SE','TR','CPD','IAH','TE','II','CLP','CII','MEI','EISI','CEGE','DI','DIU','MDA','DBA','DGP','PGV','SSO','LP','AO','PPR','NTP','VC','NPI','PL','TIC','SS','PTC','PLD','CRIP','RI','IN','BDD','RI','SIG','GRD','RSC','SCGC','PDIH','DAI','IV','SPSI','TID','CRIM','PDM','PDS','PCS','RMS','RPC','FADI','MNI']
 
-cursos = [curso1, curso2, curso3]
+cursos = [curso1, curso2, curso3,curso4]
 path_cursos = [primero, segundo, tercero, cuarto]
 
 """funcion que elimina la cadena que identifica la asignatura de un archivo'
