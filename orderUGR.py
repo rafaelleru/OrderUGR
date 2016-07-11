@@ -21,14 +21,14 @@ curso2 = [
     'IA', 'FIS', 'AC', 'ALG', 'FBD']
 
 curso3 = [
-    'MC', 'IG', 'DDSI', 'FR', 'ISE',
-    'SWAP', 'TDRC', 'SMM', 'TW', 'CUIA',  # TI
-    'DHD', 'SMP', 'AS', 'ACAP', 'DSE',  # IC
-    'DS', 'SG', 'DSD', 'DIU', 'SIBW',  # IS
+    #'MC', 'IG', 'DDSI', 'FR', 'ISE',
+    #'SWAP', 'TDRC', 'SMM', 'TW', 'CUIA',  # TI
+    #'DHD', 'SMP', 'AS', 'ACAP', 'DSE',  # IC
+    #'DS', 'SG', 'DSD', 'DIU', 'SIBW',  # IS
     'MCA', 'MH', 'TSI', 'IC', 'AA',  # CSI
-    'SIE', 'PW', 'SMD', 'ISI', 'ABD'  # SI
+    #'SIE', 'PW', 'SMD', 'ISI', 'ABD'  # SI
 ]  # Mas cosas
-curso4 = [
+"""curso4 = [
     'SE', 'TR', 'CPD', 'IAH', 'TE',
     'II', 'CLP', 'CII', 'MEI', 'EISI',
     'CEGE', 'DI', 'DIU', 'MDA', 'DBA',
@@ -39,9 +39,9 @@ curso4 = [
     'GRD', 'RSC', 'SCGC', 'PDIH', 'DAI',
     'IV', 'SPSI', 'TID', 'CRIM', 'PDM',
     'PDS', 'PCS', 'RMS', 'RPC', 'FADI',
-    'MNI']
+    'MNI']"""
 
-cursos = [curso1, curso2, curso3, curso4]
+cursos = [curso1, curso2, curso3]
 path_cursos = [primero, segundo, tercero, cuarto]
 
 """funcion que elimina la cadena que identifica la asignatura de un archivo'
@@ -49,12 +49,18 @@ para almacenarlo"""
 
 
 def eliminaCadena(cadena, archivo):
-    archivo_nuevo = ""
+    archivo_nuevo = None
 
     if "_" + cadena in archivo:
         archivo_nuevo = archivo.replace("_" + cadena, '')
     elif "-" + cadena in archivo:
         archivo_nuevo = archivo.replace("-" + cadena, '')
+    elif cadena + "-" in archivo:
+        archivo_nuevo = archivo.replace(cadena + "-", '')
+    elif cadena + "_" in archivo:
+         archivo_nuevo = archivo.replace(cadena + "_", '')
+    elif cadena in archivo:
+        archivo_nuevo = archivo.replace(cadena, '')
     else:
         archivo_nuevo = archivo
 
@@ -71,8 +77,8 @@ def renombraPath(archivo):
                 ncurso = cursos.index(curso)
                 archivo_nuevo = eliminaCadena(asignatura, archivo)
                 # si la carpeta para esa asignatura no existe la crea
-                """if not os.path.isdir(os.path.join(UGR, asignatura)):
-                    os.makedirs(os.path.join(UGR, asignatura))"""
+                if not os.path.isdir(os.path.join(UGR, asignatura)):
+                    os.makedirs(os.path.join(UGR, asignatura))
                 nuevo_path = os.path.join(
                     path_cursos[ncurso], os.path.join(asignatura,
                                                       archivo_nuevo))
@@ -87,6 +93,7 @@ def mueveArchivos():
             if not (nuevo_archivo is None):
                 os.rename(os.path.join(Descargas, arch), nuevo_archivo)
                 print(nuevo_archivo)
+
 
 
 mueveArchivos()
