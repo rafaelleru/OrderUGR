@@ -1,1 +1,1 @@
-*/30 * * * * /home/<username>/scripts/orderUGR.py >> /home/<username>/.cronlog/orderUGR.log
+*/30 * * * * /home/orderUGR/pormiscojones.sh >> /home/rafa/.cronlog/orderUGR.log

@@ -49,8 +49,7 @@ def renombraArchivos(paraMover):
     for tupla in paraMover:
         tupla[1] = tupla[1].replace('-'+tupla[0], '')
         nuevos.append(tupla)
-        #print(tupla)
-
+        #print(tupla)   debuggin
         
 def busca_archivos():
     asig_arch = None
@@ -73,7 +72,8 @@ def mueveArchivos(paraMover):
         archivo_antiguo = os.path.join(Descargas, tupla[1]+'-'+tupla[0])
         nuevo = os.path.join(directorio, tupla[1])
         os.rename(archivo_antiguo, nuevo)
-        print(nuevo)
-    
+       # print(nuevo)
+       #Voy a escribir el log por si se pierde algo
+       
 tomove = busca_archivos()
 mueveArchivos(tomove)
