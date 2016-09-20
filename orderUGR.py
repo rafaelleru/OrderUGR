@@ -74,6 +74,12 @@ def mueveArchivos(paraMover):
         os.rename(archivo_antiguo, nuevo)
        # print(nuevo)
        #Voy a escribir el log por si se pierde algo
-       
+
 tomove = busca_archivos()
-mueveArchivos(tomove)
+
+if tomove is not []:
+    print("No hay archivos que mover.")
+else:
+    mueveArchivos(tomove)
+    print("Todo en su sito.")
+
