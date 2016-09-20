@@ -13,7 +13,7 @@ tercero = os.path.join(UGR, "tercero")
 cuarto = os.path.join(UGR, "cuarto")
 
 curso1 = [
-    'CA', 'ALEM', 'FS', 'FP', 'FFT'
+    'CA', 'ALEM', 'FS', 'FP', 'FFT',
     'LMD', 'TOC', 'MP', 'ES', 'IES']
 
 curso2 = [
@@ -42,59 +42,38 @@ curso3 = [
     'MNI']"""
 
 cursos = [curso1, curso2, curso3]
-path_cursos = [primero, segundo, tercero, cuarto]
+path_cursos = ['primero', 'segundo', 'tercero', 'cuarto']
 
-"""funcion que elimina la cadena que identifica la asignatura de un archivo'
-para almacenarlo"""
+def renombraArchivos(paraMover):
+    nuevos = []
+    for tupla in paraMover:
+        tupla[1] = tupla[1].replace('-'+tupla[0], '')
+        nuevos.append(tupla)
+        #print(tupla)
 
+        
+def busca_archivos():
+    asig_arch = None
+    paraMover = []
+    for root, dirs, files in os.walk(Descargas):
+        for curso in cursos:
+            for asig in curso:
+                for archivo in files:
+                    if archivo.endswith(asig):
+                        asig_arch = [asig, archivo, cursos.index(curso)]
+                        print(asig_arch)
+                        paraMover.append(asig_arch)
+    renombraArchivos(paraMover)
+    return paraMover
 
-def eliminaCadena(cadena, archivo):
-    archivo_nuevo = None
-
-    if "_" + cadena in archivo:
-        archivo_nuevo = archivo.replace("_" + cadena, '')
-    elif "-" + cadena in archivo:
-        archivo_nuevo = archivo.replace("-" + cadena, '')
-    elif cadena + "-" in archivo:
-        archivo_nuevo = archivo.replace(cadena + "-", '')
-    elif cadena + "_" in archivo:
-         archivo_nuevo = archivo.replace(cadena + "_", '')
-    elif cadena in archivo:
-        archivo_nuevo = archivo.replace(cadena, '')
-    else:
-        archivo_nuevo = archivo
-
-    return archivo_nuevo
-
-# funcion que devuelve la nueva ruta del archivo
-
-
-def renombraPath(archivo):
-    nuevo_path = None
-    for curso in cursos:
-        for asignatura in curso:
-            if asignatura in archivo:
-                ncurso = cursos.index(curso)
-                archivo_nuevo = eliminaCadena(asignatura, archivo)
-                # si la carpeta para esa asignatura no existe la crea
-                if not os.path.isdir(os.path.join(UGR, asignatura)):
-                    os.makedirs(os.path.join(path_cursos[ncurso],
-                                             asignatura))
-                nuevo_path = os.path.join(
-                    path_cursos[ncurso], os.path.join(asignatura,
-                                                      archivo_nuevo))
-    return nuevo_path
-
-
-def mueveArchivos():
-
-    for path, names, files in os.walk(Descargas):
-        for arch in files:
-            nuevo_archivo = renombraPath(arch)
-            if not (nuevo_archivo is None):
-                os.rename(os.path.join(Descargas, arch), nuevo_archivo)
-                print(nuevo_archivo)
-
-
-
-mueveArchivos()
+def mueveArchivos(paraMover):
+    for tupla in paraMover:
+        curso = os.path.join(UGR, path_cursos[tupla[2]])
+        directorio = os.path.join(curso, tupla[0])
+        archivo_antiguo = os.path.join(Descargas, tupla[1]+'-'+tupla[0])
+        nuevo = os.path.join(directorio, tupla[1])
+        os.rename(archivo_antiguo, nuevo)
+        print(nuevo)
+    
+tomove = busca_archivos()
+mueveArchivos(tomove)
