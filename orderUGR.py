@@ -4,9 +4,13 @@ import sys
 
 """paths de las carpetas, si se tiene otra organizacion distinta cambiar los
 que hagan falta"""
+#comprobacion si .conf existe
+rutaDescargas = "Descargas"
+rutaCursos = "UGR"
+
 home = os.path.expanduser("~")
-Descargas = os.path.join(home, "rutaDescar")
-UGR = os.path.join(home, "rutaCursos")
+Descargas = os.path.join(home, rutaDescargas)
+UGR = os.path.join(home, rutaCursos)
 
 primero = os.path.join(UGR, "primero")
 segundo = os.path.join(UGR, "segundo")
@@ -78,11 +82,15 @@ def mueveArchivos(paraMover):
 
 tomove = busca_archivos()
 
+#Crea archivo de configuracion con las rutas propias
 if len(sys.argv) == 2: 
     if sys.argv[1] == '--configure':
         rutaCursos = input ("Ruta (sin /home/<user>/) donde quiere guardar los archivos ordenados: ")
-        rutaDescar = input ("Ruta (sin /home/<user>/) donde se descargan por defecto los archivos: ")
-        
+        rutaDescargas = input ("Ruta (sin /home/<user>/) donde se descargan por defecto los archivos: ")
+        f = open(os.path.join(home,".OrderUGR.conf"), "w")
+        f.write( rutaDescargas + "\n" )
+        f.write( rutaCursos + "\n" )
+        f.close()
     else:
         print ("El argumento introducido es erroneo. Pruebe con  --configure ")
 else:
