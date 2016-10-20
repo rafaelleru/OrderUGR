@@ -1,11 +1,24 @@
 #!/usr/bin/python3
 import os
+import sys
 
 """paths de las carpetas, si se tiene otra organizacion distinta cambiar los
 que hagan falta"""
 home = os.path.expanduser("~")
-Descargas = os.path.join(home, "Descargas")
-UGR = os.path.join(home, "UGR")
+
+#Cambio de variables de ruta
+#Comprobacion si .conf existe
+if os.path.isfile(os.path.join(home,".orderUGR.conf"):
+    f = open(os.path.join(home,".orderUGR.conf"), 'r')
+    rutaDescargas = f.readline()
+    rutaCursos = f.readline()
+    f.close()
+else:
+    rutaDescargas = "Descargas"
+    rutaCursos = "UGR"
+                  
+Descargas = os.path.join(home, rutaDescargas)
+UGR = os.path.join(home, rutaCursos)
 
 primero = os.path.join(UGR, "primero")
 segundo = os.path.join(UGR, "segundo")
@@ -77,9 +90,23 @@ def mueveArchivos(paraMover):
 
 tomove = busca_archivos()
 
+#Crea archivo de configuracion con las rutas propias
+if len(sys.argv) == 2: 
+    if sys.argv[1] == '--configure':
+        rutaCursos = input ("Ruta (sin /home/<user>/) donde quiere guardar los archivos ordenados: ")
+        rutaDescargas = input ("Ruta (sin /home/<user>/) donde se descargan por defecto los archivos: ")
+        f = open(os.path.join(home,".orderUGR.conf"), "w")
+        f.write( rutaDescargas + "\n" )
+        f.write( rutaCursos + "\n" )
+        f.close()
+    else:
+        print ("El argumento introducido es erroneo. Pruebe con  --configure ")
+        
+
 if tomove is not []:
     print("No hay archivos que mover.")
 else:
     mueveArchivos(tomove)
     print("Todo en su sito.")
+
 
