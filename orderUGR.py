@@ -21,7 +21,7 @@ curso2 = [
     'IA', 'FIS', 'AC', 'ALG', 'FBD']
 
 curso3 = [
-    #'MC', 'IG', 'DDSI', 'FR', 'ISE',
+    'MC', 'IG', 'DDSI', 'FR', 'ISE', 'SWAP'
     #'SWAP', 'TDRC', 'SMM', 'TW', 'CUIA',  # TI
     #'DHD', 'SMP', 'AS', 'ACAP', 'DSE',  # IC
     #'DS', 'SG', 'DSD', 'DIU', 'SIBW',  # IS
@@ -60,7 +60,7 @@ def busca_archivos():
                 for archivo in files:
                     if archivo.endswith(asig):
                         asig_arch = [asig, archivo, cursos.index(curso)]
-                        print(asig_arch)
+                        #print(asig_arch)
                         paraMover.append(asig_arch)
     renombraArchivos(paraMover)
     return paraMover
@@ -72,14 +72,11 @@ def mueveArchivos(paraMover):
         archivo_antiguo = os.path.join(Descargas, tupla[1]+'-'+tupla[0])
         nuevo = os.path.join(directorio, tupla[1])
         os.rename(archivo_antiguo, nuevo)
-       # print(nuevo)
+        print(nuevo)
        #Voy a escribir el log por si se pierde algo
 
 tomove = busca_archivos()
 
-if tomove is not []:
-    print("No hay archivos que mover.")
-else:
-    mueveArchivos(tomove)
-    print("Todo en su sito.")
+mueveArchivos(tomove)
+print("Todo en su sito.")
 
