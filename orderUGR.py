@@ -8,7 +8,7 @@ home = os.path.expanduser("~")
 
 #Cambio de variables de ruta
 #Comprobacion si .conf existe
-if os.path.isfile(os.path.join(home,".orderUGR.conf"):
+if os.path.isfile(os.path.join(home,".orderUGR.conf")):
     f = open(os.path.join(home,".orderUGR.conf"), 'r')
     rutaDescargas = f.readline()
     rutaCursos = f.readline()
