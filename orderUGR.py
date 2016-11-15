@@ -103,7 +103,7 @@ if len(sys.argv) == 2:
         print ("El argumento introducido es erroneo. Pruebe con  --configure ")
         
 
-if tomove is not []:
+if tomove is []:
     print("No hay archivos que mover.")
 else:
     mueveArchivos(tomove)
